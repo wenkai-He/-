@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    //使用箭头函数绑定dom事件时 this指向window 类原型的this也指向window
+    //普通函数就是该dom元素
+
+
+
+    // this指向的是调用此函数的对象
+    // 异步操作会让this指向window 使用箭头函数可以转换作用域成调用作用域
+    // 箭头函数this指向上级作用域
+    let a = 'Hello World!';
+    function first() {
+      console.log('Inside first function');
+      second();
+      console.log('Again inside first function');
+    }
+    function second() {
+      console.log('Inside second function');
+    }
+    first();
+    console.log('Inside Global Execution Context');
+
+ 
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<input type="text" id="inputext">
+<button type="button" disabled id="add">点我！</button>
+
+<body>
+  <script>
+
+    let arr = [
+      { id: 1, name: '部门1', pid: 0 },
+      { id: 2, name: '部门2', pid: 1 },
+      { id: 3, name: '部门3', pid: 1 },
+      { id: 4, name: '部门4', pid: 3 },
+      { id: 5, name: '部门5', pid: 4 },
+    ]
+
+
+    function convert(list) {
+      let result = [];
+      const map = list.reduce((pre, cur) => {
+        pre[cur.id] = cur;
+        return pre;
+      }, {})
+
+      for (let item of list) {
+        if (item.pid == 0) {
+          result.push(item);
+          continue;
+        }
+        if (item.pid in map) {
+          const parent = map[item.pid];
+          parent.children = parent.children || [];
+          parent.children.push(item);
+        }
+      }
+      return result
+    }
+    let res = convert(arr);
+    console.log(res);
+
+
+    function reverse(jsontree) {
+      let q = [jsontree[0]];
+      let result = [];
+      while (q.length != 0) {
+        let item = q.shift();
+        let { id, name, pid } = item;
+        result.push({ id, name, pid });
+        let children = item.children;
+        if (children) {
+          for (let i = 0; i < children.length; i++) {
+            q.push(children[i])
+          }
+        }
+      }
+      return result
+    }
+    let res2 = reverse(res);
+    console.log(res2);
+  </script>
+</body>
+
+</html>

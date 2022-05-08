@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    http特点 
+        1:无状态 无法对之前的状态来处理这次请求
+        2:无连接 每次链接只处理一次请求
+        3:简单快速灵活
+        4:通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性
+
+        http存在的问题: 明文传输 不安全   不会验证通信双方的身份 容易被伪装
+    
+    https特点
+    ssl secure socket layer transport layer security
+    0.加密 数据一致性 身份验证
+        1:https是http运行在ssl、tls协议上 通过ssl证书来验证服务器身份为浏览器和服务器之间的通信进行加密
+        2:ssl做到这一切主要靠 对称加密 非对称加密 数字签名
+        3.对称加密:加密和解密的密钥是同一个 然后只要保证密钥的安全就可以了
+        4.非对称加密 加密和解密一个公钥一个私钥   公钥可以给任何人使用 私钥需要保密
+        5.混合加密 使用密钥进行加密 然后使用公钥对密钥加密 私钥解密
+        
+        
+    http1.0 浏览器和服务器只保持短暂的链接 每次请求都需要建立一个tcp链接 可以设置长连接
+    http1.1 默认支持长连接 在一个tcp连接上可以处理多个http请求 支持http缓存 
+    http2.0 多路复用 客户端和浏览器都可以同时发送多个请求或回应，而且不用按照顺序一一对应  避免了队头阻塞
+            二进制分帧 采用二进制格式传输 而不是之前的文本传输
+            首部压缩   因为header里会携带很多数据 于是进行压缩 第一次发送所有header信息 第二次只需要发送差异就行
+            服务器推送 允许服务端推送一些静态资源给客户端 这样可以避免再次创建请求获取静态资源
+</body>
+</html>

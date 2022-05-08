@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class query{
+            constructor(){
+                this.items=[];
+            }
+
+            inquery(element){
+                this.items.push(element)
+            }
+
+            outquery(){
+                this.items.shift()
+            }
+        }
+let a=new query()
+a.inquery(1)
+a.inquery(2)
+a.inquery(3)
+a.inquery(4)
+a.inquery(5)
+console.log(a);
+// a.outquery()
+console.log(a);
+
+    </script>
+</body>
+</html>

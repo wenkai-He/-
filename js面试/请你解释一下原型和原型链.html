@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //只有对象才有__proto__和constructor属性 
+        //函数才有prototype
+        //原型链和原型存在的意义就是可以将一些共有的方法属性定义在原型上，这样实例对象可以动态获取这些方法和属性，可以节省空间
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.motherland = 'China'
+        Person.prototype.hairColor = 'black';
+        Person.prototype.eat = function () {
+            console.log('We usually eat three meals a day.')
+        }
+       
+
+        let person01 = new Person('小明', 18);
+        let person02=Object.create(Person.prototype)//person02.__proto__==Person.prototype
+        person02.eat()
+        person02.name='owen'
+        person02.age=20
+        console.log(person02.__proto__==Person.prototype);
+        console.log(person02.name);
+        console.log(person02.age);
+
+
+    </script>
+</body>
+
+</html>

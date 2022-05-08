@@ -1,0 +1,3 @@
+vuex 混入 数据劫持 在所有组件的beforecreate周期中增加了一个$store的对象
+
+Vuex的双向绑定通过调用 new Vue实现，然后通过 Vue.mixin 注入到Vue组件的生命周期中，再通过劫持state.get将数据放入组件中

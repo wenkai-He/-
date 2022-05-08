@@ -1,0 +1,7 @@
+1.svg是由XML生成的 canvas是由js动态绘制的
+2.svg全称scaleable vector graphic可缩放矢量模型    canvas是画布
+3.svg放大缩小不会失真 canvas会
+4.canvas绘制的图形不会出现在DOM结构中 svg绘制的会存在于DOM结构
+5.canvas类似于动画 每次图形的改变都是先清除原来的图形 然后把新的图形画上去  svg则是可以直接通过js来进行某些操作
+6.canvas无法对已经画出来的图像修改 svg可以
+7.canvas是基于像素点的 属于位图    svg是基于图形 通过操作html来控制形状

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //symbol是为了解决属性名冲突的问题 以及可以模拟私有变量
+        
+        //symbol除了表示完全唯一的值（防止对象意外名称冲突，例如当使用2个想要向同一对象添加属性的库时）
+        //您还可以隐藏这种方式对象的属性 虽然任然可以被Object.getOwnPropertySymbol访问到
+        //Symbol是不可枚举的
+        //symbol是原始类型 不能使用new去创建
+
+        //symbol.for()可以共享symbol
+        let ssn = Symbol.for('ssn');
+        let nz = Symbol.for('ssn');
+        console.log(ssn === nz); // true
+        console.log(Symbol.keyFor(nz)); // 'ssn'
+    //如果symbol是通过Symbol()创建的，使用Symbol.keyFor()会返回undefined
+        let systemID = Symbol('sys');
+        console.log(Symbol.keyFor(systemID)); // undefined
+
+        //Symbol.iterator 迭代器 具有这个属性的被称为可迭代对象 for..of可以使用 iterator.next()
+        
+
+
+
+
+
+    </script>
+</body>
+
+</html>

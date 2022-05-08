@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let set=new Set([1,2,3]);
+        console.log(set.size);
+        set.add(3);//添加无效
+        set.add(4).add(5);//add可以链式调用
+        console.log(set.delete(4));//返回一个bool值
+        console.log(set.has(5));//返回一个bool值
+        //console.log(set.clear());//清空
+        //set拥有Symbol.iterator属性 所以可以forof遍历
+        for (const i of set) {
+            console.log(i);
+        }
+
+        //set转数组
+        console.log(Array.from(set));
+        console.log([...set]);
+
+        //set两大作用
+        //1.数组去重
+        let arr=[1,2,3,2];
+        let set1=new Set(arr);
+        console.log(set1);
+        //2.求交集并集差集
+        //并集
+        const set2=new Set([1,2,4]);
+        const set3=new Set([2,4,6])
+        const set4=new Set([...set2,...set3])
+        console.log(set4);
+        //交集
+        const set5=new Set([...set2].filter(item=>set3.has(item)))
+        console.log(set5);
+        //差集
+        const set6=new Set([...set2].filter(item=>!set3.has(item)))
+        console.log(set6);
+
+
+
+        //weakset
+        // 结构与set类似 存储不重复无序的元素集合
+        // 区别
+        // 只能存储引用类型 不可以是基本类型
+        // 不可遍历 因为他是弱引用 垃圾回收机制不会考虑weakset里的引用    无size属性
+    </script>
+</body>
+</html>

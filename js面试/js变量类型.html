@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//null到底是原始类型还是引用类型
+// typeof(null)->object
+        //原始类型 number boolean string symbol undefined null
+        //存在栈里
+        // let a=10;
+        // let b=a;
+        // a=20
+        // console.log('b',b);
+
+        //引用类型 object function array 
+        //存在堆里 拷贝的是内存地址
+        let a={age:10};
+        //深拷贝
+        let b=JSON.parse(JSON.stringify(a));
+        //浅拷贝
+        let c=a;
+        let d=Object.assign(a)
+        a.age=11;
+        console.log('b',b);
+        console.log('c',c);
+        console.log('d',d);
+
+        
+
+    </script>
+</body>
+</html>

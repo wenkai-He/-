@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    重点就是overflow:hidden white-space:nowrap 不换行   text-overflow:ellipsis 多余的用省略号 这三个一起
+    <p >这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本这是一些文本</p>
+</body>
+
+    
+</html>
+<style>
+    p{
+        line-height: 40px;
+        width:400px;
+        height:40px;
+        border:1px solid red;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+p:hover{
+    line-height: 40px;
+        width:400px;
+        height:120px;
+        border:1px solid gray;
+        overflow: visible;
+        white-space: normal;
+}
+
+
+</style>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        const delay = player => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(player)
+                    //reject(new Error('出错了'))
+                }, Math.random() * 1000)
+            })
+        }
+        const p1 = delay('owen')
+        const p2 = delay('lbj')
+        const p3 = delay('kd')
+
+        // Promise.myrace=function(array){
+        //     return new Promise((resolve,reject)=>{
+        //         for(let i=0;i<array.length;i++){
+        //             const item=array[i];
+        //             if(Object.prototype.toString.call(item)=='[object Promise]'){
+        //                 console.log(Object.prototype.toString.call(item));
+        //                 item.then(resolve,reject)
+        //             }else{
+        //                 resolve(item);
+        //             }
+        //         }
+        //     })
+        // }
+       Promise.myrace=function(array){
+           return new Promise((resolve,reject)=>{
+               for(let i=0;i<array.length;i++){
+                   let item=array[i];
+                   if(item.constructor==Promise){
+                       item.then(resolve,reject)
+                   }else{
+                       resolve(item);
+                   }
+               }
+           })
+       }
+        Promise.myrace([p1,p2,p3]).then(results=>{
+         console.log(results);
+     }).catch(e=>{
+         console.log(e)
+     })
+    </script>
+</body>
+
+</html>

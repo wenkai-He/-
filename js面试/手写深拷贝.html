@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        const oldObj={
+            name:'owen',
+            age:20,
+            colors:['orange','green','blue'],
+            friend:{
+                name:'james'
+            }
+        }
+//手写深拷贝
+//深拷贝 修改拷贝之后的值不会更改以前的值
+// const deepclone=function(obj){
+//     if(typeof obj !='object'||obj==null)return obj;
+//     let result=Array.isArray(obj)?[]:{};
+//     for (var i in obj){
+//         if(obj.hasOwnProperty(i)){//拷贝自身的属性 而不要拷贝原型上的属性
+//             result[i]=deepclone(obj[i])//递归调用 可以深拷贝嵌套对象值
+//         }
+//     }
+//     return result;
+// }
+
+
+function deepclone(obj){
+    if(typeof obj!="object"||obj==null){
+        return obj;
+    }
+    let result=Array.isArray(obj)?[]:{};
+    for(let i in obj){
+        if(obj.hasOwnProperty(i)){
+            result[i]=deepclone(obj[i])
+        }
+    }
+
+    return result;
+}
+
+        const newObj2=deepclone(oldObj);
+        newObj2.name='curry';
+        newObj2.friend.name='davis'
+        console.log('oldObj:',oldObj);
+        console.log('newObj2:',newObj2);
+
+    </script>
+</body>
+</html>

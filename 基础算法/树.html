@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class node {
+            constructor(data) {
+                this.root = this;
+                this.data = data;
+                this.left = null;
+                this.right = null;
+            }
+        }
+
+        class tree {
+            constructor() {
+                this.root = null //初始化根节点
+            }
+            // 插入节点
+            insert(data) {
+                const newNode = new node(data);
+                const insertNode = (node, newNode) => {
+                    if (newNode.data < node.data) { // 如果插入的节点值比父节点小则插入到左节点上反之则插入到右节点上
+                        if (node.left === null) {
+                            node.left = newNode
+                        } else {
+                            insertNode(node.left, newNode) // 递归找下一层的左侧节点（重点）
+                        }
+                    } else {
+                        if (node.right === null) {
+                            node.right = newNode;
+                        } else {
+                            insertNode(node.right, newNode)
+                        }
+                    }
+                }
+                if (!this.root) {
+                    this.root = newNode;
+                } else {
+                    insertNode(this.root, newNode);
+                }
+            }
+            search(data) {
+                const searchNode = (node) => {
+                    if (node == null) return false
+                    if (node.data == data) return node
+                    return searchNode(data < node.data ? node.left : node.right, data)
+                }
+                return searchNode(this.root, data)
+            }
+            getMin(node) {
+                function minNode(node) {
+                    return node ? (node.left ? minNode(node.left) : node) : null
+                }
+                return minNode(node || this.root)
+            }
+            getMax(node) {
+                function maxNode(node) {
+                    return node ? (node.right ? maxNode(node.right) : node) : null
+                }
+                return maxNode(node || this.root)
+            }
+            preOrderTraversal() {
+                let arr = [];
+                let root = this.root
+                const preOrder = function (node) {
+                    if (node == null) return arr;
+                    arr.push(node.data);
+                    preOrder(node.left);
+                    preOrder(node.right);
+                }
+
+                preOrder(root)
+                return arr;
+            }
+            inOrderTraversal() {
+                let arr = [];
+                let root = this.root
+                const inOrder = function (node) {
+                    if (node == null) return arr;
+                    inOrder(node.left);
+                    arr.push(node.data);
+                    inOrder(node.right);
+                }
+
+                inOrder(root)
+                return arr;
+            }
+            postOrderTraversal() {
+                let arr = [];
+                let root = this.root
+                const postOrder = function (node) {
+                    if (node == null) return arr;
+                    postOrder(node.left);
+                    postOrder(node.right);
+                    arr.push(node.data);
+                }
+
+                postOrder(root)
+                return arr;
+            }
+            depth() { 
+                const maxDepth = function (node) {
+                    let count=0;
+                    if (node === null) {
+                        return 0;
+                    }
+                    count=Math.max(maxDepth(node.left), maxDepth(node.right)) + 1
+                    return count;
+                };
+               let b= maxDepth(this.root)
+                    return b
+            }
+        }
+
+        let a = new tree();
+        a.insert(1)
+        a.insert(2)
+        a.insert(3)
+        a.insert(6)
+        a.insert(4)
+        a.insert(5)
+        a.insert(7)
+        console.log(a);
+        console.log(a.getMax());
+        console.log(a.getMin());
+        console.log(a.preOrderTraversal());
+        console.log(a.inOrderTraversal());
+        console.log(a.postOrderTraversal());
+        console.log(a.depth());
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function Object(a,b,c){
+            console.log(a,b,c);
+            console.log(this.x+'------'+this.y);
+        }
+
+        const obj={
+            x:1,
+            y:2
+        }
+        const obj2={
+            x:3,
+            y:4
+        }
+        const obj3={
+            x:5,
+            y:6
+        }
+        //apply会立即执行 apply是改变this执行  临时改变一次this apply传参是传一个数组
+        Object.apply(obj,[1,2,3])
+        //bind是返回一个函数不会立即执行 bind是绑定this指向 返回的函数永久改变this指向 bind传参是一个参数列表 bind可以分两次传参
+        Object.bind(obj2,1)(2,3) 
+        //call跟apply差不多 区别在于call传参是一个参数列表
+        Object.call(obj3,1,2,3)
+    </script>
+</body>
+</html>

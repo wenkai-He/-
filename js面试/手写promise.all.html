@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写promise.all</title>
+</head>
+
+<body>
+    <script>
+
+        //promise.all(iterator)//传入的是一个可迭代对象 字符串 数组 就是那个函数带*的 yield的东西 如何转化成数组？使用扩展运算符...或者Array.from就行
+
+        const delay = player => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(player)
+                    //reject(new Error('出错了'))
+                }, Math.random() * 1000)
+            })
+        }
+        const p1 = delay('owen')
+        const p2 = delay('lbj')
+        const p3 = delay('kd')
+
+
+        //for循环
+        // Promise.myall=function(array){
+        //     return new Promise((resolve,reject)=>{
+        //         const results=[];
+        //         //计数器
+        //         let count=0
+        //         for(let i=0;i<array.length;i++){
+        //             const item=array[i];
+        //             if(item.constructor==Promise){
+        //                 item.then(data=>{
+        //                     //不能results.push(data) 因为要排到指定的下标
+        //                     results[i]=data;
+        //                     count++;
+        //                     //这个是错的，因为传入的数组可能为空，但是长度也是3
+        //                     // if(results.length==array.length){
+        //                     //     resolve(results)
+        //                     // }
+        //                     if(count==array.length){
+        //                         resolve(results)
+        //                     }
+        //                 },reject)
+        //             }else{
+        //                 results[i]=item;
+        //                 count++;
+        //             }
+        //         }
+        //     })
+        // }
+
+
+        Promise.myall = function (array) {
+            return new Promise((resolve, reject) => {
+                const result = [];
+                let count = 0;
+                for (let i = 0; i < array.length; i++) {
+                    let item = array[i];
+                    if (item.constructor == Promise) {
+                        item.then(data => {
+                            result[i] = data;
+                            count++;
+                            if (count == array.length) {
+                                resolve(result);
+                            }
+                        }, reject)
+                    } else {
+                        result[i] = item;
+                        count++;
+                        if (count == array.length) {
+                            resolve(result);
+                        }
+                    }
+
+                }
+            })
+        }
+
+        //递归
+        // Promise.myall=function(array){
+        //     return new Promise((resolve,reject)=>{
+        //         const results=[]
+        //         next(0)
+        //         function next(i){
+        //             const item=array[i]
+        //             if(!item){
+        //                 resolve(results)
+        //                 return 
+        //             }
+        //             if(item.constructor==Promise){
+        //                 item.then(data=>{
+        //                     results[i]=data;
+        //                     next(i+1);
+        //                 },reject)
+        //             }else{
+        //                 results[i]=item;
+        //                 next(i+1);
+        //             }
+        //         }
+        //     })
+        // }
+
+        Promise.myall([p1, p2, p3]).then(results => {
+            console.log(results);
+        })
+    //  //promise会将非promise自动封装成promise
+    //  Promise.myall([p1,p2,p3,'jb']).then(results=>{
+    //      console.log(results);
+    //  })
+    //  Promise.all([p1,p2,p3]).then(results=>{
+    //      console.log(results);
+    //  }).catch(e=>{
+    //      console.log(e)
+    //  })
+
+
+    </script>
+</body>
+
+</html>

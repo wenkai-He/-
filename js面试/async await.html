@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //async 其实是generator的语法糖 async就代表* await就是yield 
+        //封装了next()方法 不用自己执行 返回值是promise 如果返回值不是 则会包装成promise
+        //生成器函数 每隔一秒输出一个1
+        //async后面跟的是成功promise await会自动提取resolve的参数返回
+        //如果await后面的promise实例是失败态的,后面代码会中断,所以需要trycatch
+
+
+        //实现每隔1秒输出12345
+        // const delay=n=>new Promise((resolve,reject)=>{
+        //     setTimeout(()=>{
+        //         resolve(n)
+        //     },1000)
+        // })
+
+        // async function g(){
+        //     for(let i=0;i<=5;i++){
+        //         const x=await delay(i)
+        //         console.log(x);
+        //     }
+        // }
+        // g()
+
+
+            //trycatch配合asyncawait
+        // async function fn() {
+        //     console.log(123);
+
+        //     try {
+        //         const n = await new Promise((resolve, reject) => {
+        //             setTimeout(() => {
+        //                 //resolve('success')
+        //                 reject('123')
+        //             }, 2000)
+        //         })
+        //         console.log(456);
+        //         console.log(n);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        //     console.log(789);
+        // }
+        // fn()
+            
+
+        function doDish(step){
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    resolve(step);
+                },Math.random()*2000)
+            })
+        }
+        //同步方式执行异步代码
+        async function fn(){
+            const step1=await doDish('买东西')
+            console.log(step1);
+            const step2=await doDish('洗东西')
+            console.log(step2);
+            const step3=await doDish('切东西')
+            console.log(step3);
+            const step4=await doDish('煮东西')
+            console.log(step4);
+        }
+        console.log('我在fn前面比fn快');
+        fn()
+        console.log('我在fn后面比fn快吗');
+    </script>
+</body>
+
+</html>

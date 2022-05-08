@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    xss全称cross site scripting 发生在客户端
+    xss攻击就是将恶意代码植入到用户使用的页面中 他是为了盗取用户的cookie从而可以伪装用户与网站进行交互
+    xss攻击有三种 
+    1.domxss 
+    用户不小心点击了恶意的url进入页面 前端js解析器就会从url中取出恶意代码执行 这样就有可能用户的个人信息被窃取 
+    然后攻击者就会拿着这些信息去跟网站进行交互 属于是前端的自身漏洞
+    2.反射式xss
+    用户不小心点击了恶意的url进入页面 浏览器就会向服务器发请求 服务器带有恶意脚本的网页返回 最后浏览器执行恶意代码盗取用户信息
+
+    反射性跟dom区别就在于dom是前端的漏洞 没有经过后端
+
+    3.存储型xss
+    将一段脚本写入数据库 用户访问时恶意代码取出从而盗用用户信息
+
+    如何预防xss攻击 xss攻击的来源主要原因是没有充分过滤url参数 对输入进行过滤 对输出进行html编码
+    比如说可以将容易导致xss攻击的边角字符替换成全角字符
+    对cookie设置http-only
+    黑名单：不可接受 白名单：可接受的数据
+
+
+    csrf 全称 cross-site request forgery 跨站请求伪造
+    用户登录了a网站 并且保存了cookie 
+    攻击者引诱用户访问b网站
+    然后b网站向a网站发送请求 浏览器会自动携带a的cookie
+    a网站误以为是用户自己发送的请求 所以会执行该请求
+
+    预防
+    1.加入http refer字段 它记录了该 HTTP 请求的来源地址 
+    2.添加token 对于get直接附在地址上 对于post在表单的最后附上 服务器需要验证token的正确以及时效性
+</body>
+</html>

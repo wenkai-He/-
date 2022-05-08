@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(0.1+0.2==0.3);//false
+        //因为js是先将十进制转化成二进制运算再转换回十进制 所以 0.1+0.2实际上等于0.3 15个0 4 
+        // js采用64位双精度浮点数  第一位符号位 2-12位是指数位 13-64表示位数 所以小数点最大偏移量是52位 也就是可以表示2的53次方-1 是用科学计数法他的长度就为16位
+        // 解决方法 对于大数来说 我觉得前端操作大数还是比较不常见的 小数的话我的建议是把小数放到整数上 算出结果后再除回去
+    </script>
+</body>
+</html>

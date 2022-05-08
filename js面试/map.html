@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const map=new Map();//可以传参 初始
+        map.set(2022,'owen').set(2021,'zayn')
+        console.log(map);
+        console.log(map.size);//2
+        console.log(map.has(2022));//true
+        console.log(map.get(2022));//'owen'
+        //console.log(map.delete(2022));//true
+        //map.clear()
+        //遍历键值对
+        for (const item of map) {
+            console.log(item);
+        }
+        for (const item of map.entries()) {
+            console.log(item);
+        }
+        //遍历键
+        for (const item of map.keys()) {
+            console.log(item);
+        }
+        //遍历值
+        for (const item of map.values()) {
+            console.log(item);
+        }
+
+
+ 
+        //weakmap  weakmap只接受对象作为键名(null除外) 不接受其他类型的值作为键名
+        //weakmap键名指向的对象 不计入垃圾回收机制
+        //没有遍历操作的API
+        //没有clear清空方法
+    </script>
+</body>
+</html>

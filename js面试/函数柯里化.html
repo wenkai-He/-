@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            //柯里化的好处 1.参数复用 2.延迟执行
+            // function geturl(protocol,hostname,pathname){
+            //     console.log(`${protocol}://${hostname}/${pathname}`); 
+            // }
+
+        //     geturl('https')('baidu.com','passport')
+        //     geturl('https')('taobao.com','404.html')
+
+        //     function geturl(protocol){
+        //         return (hostname,pathname)=>{
+        //             console.log(`${protocol}://${hostname}/${pathname}`); 
+        //         }
+        //     }
+        //     //bind就是函数柯里化 延迟执行
+        //     Function.prototype.mybind = function (context, ...outerArgs) {
+        //      let that = this;
+        //     return function (...innerArgs) {
+        //         return that.call(context, ...outerArgs, ...innerArgs)
+        //     }
+        // }
+        
+
+
+        //手写柯里化 currying
+        // function curry(fn,...args){
+        //     //fn.length求fn的参数个数
+        //     if(args.length>=fn.length){
+        //         //参数够了 直接执行
+        //         return fn(...args)
+        //     }
+        //     return (...rest)=>{
+        //         //递归调用curry这样可以合并参数
+        //        return curry(fn,...args,...rest);
+        //     }
+
+            
+        // }
+const add=(x,y,z)=>x+y+z;
+const curryAdd=curry(add)
+console.dir(curryAdd(2)(2,2));
+console.log(curryAdd(2)(2)(2));
+console.dir(curryAdd);
+        </script>
+</body>
+</html>

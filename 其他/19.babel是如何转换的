@@ -1,0 +1,5 @@
+1.babel有许多包 比如babel-core等核心包 提供转译的api webpack中的babel-loader就是通过这个包实现的
+
+2.第一阶段parser 解析 将es6语法转换为AST抽象语法树 通过babylon
+3.第二阶段transform转换 使用babel-transform将AST转译  babel-transform根据presets转换为新的AST
+3.第三阶段Generator生成 使用babel-generator将AST转换为es5语法

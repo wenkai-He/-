@@ -1,0 +1,19 @@
+1.cookie和session是为了解决http无状态的问题 每次请求都是一个新的请求 服务端并不知道客户端的历史请求记录
+2.session就是客户端发送请求服务端接收后会开辟一块内存空间 用来记录一些操作
+3.当创建出一个session时 同时会生成一个sessionId返回给客户端 客户端会将sessionId存进cookie中 同时也会记录sessionid来自哪个域名
+    再次发送时会携带sessionid 服务端收到sessionid后就会查找对应的session信息 
+4.cookie是浏览器的本地存储
+
+
+session创建的过程:
+1.当客户端申请创建一个session时 服务端会检查请求中是否包含了sessionid 这是session的唯一标识 
+  如果包含了sessionid 就会检索出session然后使用 如果没有就生成一个session和sessionid 保存sessionid的大部分方式是cookie
+
+
+
+区别
+1.cookie在浏览器 session在服务器
+2.cookie只能保存ascii码 session可以任意数据类型
+3.cookie可以长时间保持 session是短时间的 
+4.cookie容易被盗取
+5.cookie不能超过4k session远大于cookie

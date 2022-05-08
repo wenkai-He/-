@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    DNS协议就是将域名翻译成ip地址
+
+    DNS有两种查询方式
+    1.递归查询   
+    A请求B 那么B一定会给A一个答案
+     2.迭代查询
+     A请求B B找不到就会通知A去其他地方找
+
+     DNS缓存
+     1.浏览器缓存 浏览器在获取网站域名的实际 IP 地址后会对其进行缓存
+     2.操作系统缓存
+
+     DNS查找过程
+     1.先查找浏览器缓存 2.再去操作系统缓存 3.都没找到就通知本地域名服务器进行递归查询4.通知上一级域名服务器进行迭代查询
+     5.找到了就返回给操作系统 然后存一份6.再返回给浏览器 存一份
+</body>
+</html>

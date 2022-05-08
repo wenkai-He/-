@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.defer 延迟 defer会异步加载js不会影响dom渲染  如果有多个设置了defer的js标签 则会按顺序执行 
+      defer会在文档渲染完毕后 DOMContentLoaded事件调用前执行。
+    2.async 异步 async会异步加载js 但是加载完成后就会执行 会在DOMContentLoade事件调用前执行。
+    普通js 遇到就会停止解析html 进行下载js
+
+    css不会影响dom解析 但是会影响render渲染 
+    css放到头解析 js放到尾
+</body>
+</html>

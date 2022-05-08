@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    0.什么是跨域?浏览器存在同源策略 端口 主机 协议
+    1.jsonp全称json with padding 他是借用script标签来发送请求 浏览器是存在同源策略的 
+      但是一些由标签发送的请求是不会被同源策略检查到的。
+      具体做法就是需要准备一个回调函数CallBack 然后在接口后面添加?callback=Callback.
+      后端返回这个CallBack的函数调用
+      jsonp需要后端的配合 只支持get请求因为src标签中只能发送get请求 但是他的兼容性好。
+    
+
+    2.cors全称cross origin resource sharing 跨域资源共享 后端设置字段Access-Control-Allow-Origin。
+    与前端关系不大 但是可以细说一下简单请求和复杂请求 简单请求 get post head 复杂请求就是其他的请求
+    复杂请求在发送前会有一个预检请求option 就是判断是否可以跨域
+</body>
+</html>

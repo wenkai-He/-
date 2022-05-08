@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 三栏布局 1.flex 2.grid 3.两边float 中间marginleft,right 记得中间放在最后 -->
+    <!-- <div class="box">
+        <div class="left">左边</div>
+        <div class="right">右边</div>
+        <div class="main">中间</div>
+    </div> -->
+
+    <div class="main-wrapper">
+        <div class="main">中间自适应</div>
+    </div>
+    <div class="left">左边固定宽度</div>
+    <div class="right">右边固定宽度</div>
+</body>
+
+</html>
+<style>
+    /* table flex grid都可以 一个意思
+    两边absolute脱离文档流 中间margin空出位置 */
+    /* 触发bfc
+    两边float加中间margin 这个方法html里要把main放在右边后面 不然会挤掉右边 因为主题内容要最后加载
+      .box{
+         overflow: hidden;
+     }
+     .left {
+         float: left;
+         width: 200px;
+         background-color: gray;
+         height: 400px;
+     }
+     .main{
+         margin:0 200px;
+         width: 100%;
+         background-color: red;
+     }
+     .right {
+         float: right;
+         width: 200px;
+         background-color: gray;
+         height: 400px;
+     } */
+    /* 中间额外包一层 外层是浮动的 中间写左右两个margin 左右都选择右浮同样负margin 
+    左边通过使用负 margin-left:-100%，相当于中间的宽度，所以向上偏移到左侧 
+    右边通过使用负 margin-left:-100px，相当于自身宽度，所以向上偏移到最右侧  */
+    .left,
+    .right,
+    .main {
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+    }
+
+    .main-wrapper {
+        float: left;
+        width: 100%;
+    }
+
+    .main {
+        margin: 0 110px;
+        background: black;
+        color: white;
+    }
+
+    .left,
+    .right {
+        float: left;
+        width: 100px;
+        margin-left: -100%;
+        background: green;
+    }
+
+    .right {
+        margin-left: -100px;
+        /* 同自身宽度 */
+    }
+</style>

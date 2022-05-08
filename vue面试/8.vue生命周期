@@ -1,0 +1,8 @@
+1.beforecreated vue实例刚刚创建 还没有data methods 不能访问this
+2.created vue实例创建了 可以获取data跟methods 但是模板还没编译 可以访问this
+3.beforemounted 模板编译了 但是还未挂载
+4.mounted页面挂载了
+5.beforeupdated 状态更新前执行这个函数 data已经变更 但是dom还没更新
+6.updated 状态已经更新 页面实现更新
+7.beforedestory vue实例销毁前 此时还能拿到data等
+8.destoryed 实例被销毁 事件监听被销毁

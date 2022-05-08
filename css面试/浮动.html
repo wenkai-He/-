@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 为什么要清除浮动 为了解决，父元素因为子级元素浮动引起的内部高度为0的问题 -->
+    <!-- 不给父元素高度时 如果子元素是浮动的 那么是不会撑开父元素的 父元素就变成一条线 -->
+    <!-- 行内元素使用浮动后就变成了块级元素可以设置长度宽度 -->
+    清除浮动的几种方法：overflow:hidden bfc clear:both 
+    <article>
+        <div></div>
+        <div></div>
+    </article>
+</body>
+</html>
+<style>
+    /* div{
+        width:300px;
+        height: 300px;
+        border: 10px solid skyblue;
+
+        /* float: left; */
+        /* 两个块可以贴合 并且脱离文档流 */
+
+        /* display: inline-block; */
+        /* 两个块中间会存在小间隙 */
+
+    /*} 
+    
+    */
+    article{
+        border:5px solid black;
+        width:600px;
+        /* 清除浮动 可以高度自适应 */
+        overflow: hidden;
+    }
+    div:nth-of-type(1){
+        width:300px;
+        height: 300px;
+        border: 10px solid skyblue;
+        float: left;
+    }
+    div:nth-of-type(2){
+        width:300px;
+        height: 300px;
+        border: 10px solid skyblue;
+        background: blue;
+        float: left;
+    }
+</style>

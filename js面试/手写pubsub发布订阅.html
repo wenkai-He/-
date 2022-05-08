@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class Observer{
+        //     constructor(){
+        //         this.message={}
+        //     }
+        //     $on(type,fn){
+        //         if(!this.message[type]){
+        //             this.message[type]=[];
+        //         }
+        //         this.message[type].push(fn)
+        //     }
+
+        //     $off(type,fn){
+        //         //先判断有没有$on
+        //         if(!this.message[type]){
+        //             return
+        //         }
+        //         if(!fn) {
+        //            delete this.message[type]
+        //             return
+        //         }
+        //         this.message[type]=this.message[type].filter((item)=>item!=fn)
+        //         //判断有无fn
+        //     }
+
+        //     $emit(type){
+        //         if(!this.message[type]){
+        //             return
+        //         }
+        //         for(let i=0;i<this.message[type].length;i++){
+        //             this.message[type][i]();
+        //         }
+        //     }
+        // }
+        class Observer{
+            constructor(){
+                this.message={};
+            }
+            $on(type,fn){
+                if(!this.message[type]){
+                    this.message[type]=[];
+                }
+                this.message[type].push(fn);
+            }
+            $off(type,fn){
+                if(!this.message[type])return;
+                if(!fn){
+                    delete this.message[type];
+                    return;
+                }
+                this.message[type]=this.message[type].filter(item=>item!=fn)
+            }
+            $emit(type){
+                if(!this.message[type]){
+                    return;
+                }
+                for(let item of this.message[type]){
+                    item();
+                }
+            }
+        }
+        const person1 = new Observer()
+        person1.$on('abc', handlerA)
+        person1.$on('abc', handlerB)
+        person1.$on('abc', handlerC)
+        //person1.$off('abc')
+        person1.$off('abc', handlerB)
+        person1.$emit('abc')
+        //console.log(person1)
+        function handlerA() {
+            console.log('hanlerA');
+        }
+        function handlerB() {
+            console.log('hanlerB');
+        }
+        function handlerC() {
+            console.log('hanlerC');
+        }
+
+
+    </script>
+</body>
+
+</html>

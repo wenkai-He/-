@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function mynode(sel, data, children, text, elm) {
+            return {
+                sel, data, children, text, elm
+            }
+        };
+        //h('div',{},'文字')
+        //h('div',{},[])
+        //h('div',{},h())递归
+        function myh(sel, data, c) {
+            if(arguments.length!=3){
+                throw new Error('必须要三个参数')
+            }
+            if(typeof c=='string'||typeof c=='number'){
+                return mynode(sel,data,undefined,c,undefined)
+            }else if(Array.isArray(c)){
+                let children=[];
+                for(let i=0;i<c.length;i++){
+                    if(!(typeof c[i] =='object'&&c[i].hasOwnProperty('sel'))){
+                        throw new Error('你传入的数组参数有非对象的项')
+                    }else{
+                        children.push(c[i])
+                    }
+                }
+                return mynode(sel,data,children,undefined,undefined)
+
+            }else if(typeof c =='object'&&c.hasOwnProperty('sel')){
+                //代表只有一个children
+               let children=[c];
+               return mynode(sel,data,children,undefined,undefined)
+            }else{
+                throw new Error('传入参数类型不对')
+            }
+        }
+
+        var mynode1=myh('div',{},[myh('p',{},'哈哈')])
+
+        console.log(mynode1);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let s=new Set();
+        s.add(1).add(2).add(2)//只有一个2
+        console.log(s);
+        console.log(s.delete(1));//删除返回一个bool值
+        console.log(s.has(2));//查找返回一个bool值
+        s.clear();
+        console.log(s);//清除
+
+
+        //并集 union
+
+        let a=new Set([1,2,3])
+        let b=new Set([2,4,5])
+
+        let union=new Set([...a,...b])
+        console.log(union);
+
+        let intersect=new Set([...a].filter(item=>b.has(item)))
+        console.log(intersect);
+    </script>
+</body>
+</html>

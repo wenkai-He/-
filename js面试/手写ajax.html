@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url='../data.json'
+    //    function myajax(method,url,params){
+    //        const promise=new Promise((resolve,reject)=>{
+    //            const xhr=new XMLHttpRequest();
+    //            if(method=='GET'){
+    //             xhr.open(method,url+'?'+params);
+    //             xhr.send();
+    //            }
+    //            if(method=='POST'){
+    //                xhr.open(method,url);
+    //                xhr.send(params)
+    //            }
+    //            xhr.opreadystatechange=function(){
+    //                if(xhr.readyState==4){
+    //                    if(xhr.status>=200&&xhr.status<300){
+    //                        resolve(JSON.parse(xhr.responseText))
+    //                    }else{
+    //                        reject(new Error('faile'))
+    //                    }
+    //                }
+    //            }
+    //        })
+    //        return promise;
+    //    }
+
+    function myajax(method,url,params){
+        let promise= new Promise((resolve,reject)=>{
+            const xhr=new XMLHttpRequest();
+            if(method=='GET'){
+                xhr.open(method,url+'?'+params);
+                xhr.send()
+            }else if(method=='POST'){
+                xhr.open(method,url);
+                xhr.send(params)
+            }else{
+                return;
+            }
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4){
+                    if(xhr.status>=200&&xhr.status<300){
+                        resolve(JSON.parse(xhr.responseText))
+                    }else{
+                        reject(new Error('faile'))
+                    }
+                }
+            }
+
+        })
+        return promise
+    }
+
+
+        myajax(url).then(data=>{
+            console.log(data);
+        }).catch(error=>{
+            console.log(error);
+        })
+        
+
+    </script>
+</body>
+</html>

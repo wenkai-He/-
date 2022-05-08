@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //jsonp相当于动态生成一个script标签 url绑定在src上
+        
+        //在script标签里执行callback回调函数
+        jsonp('url',(err,ess)=>{//url会自动生成一个script标签并且绑定src
+            console.log('res',res);//callback
+        })
+
+    </script>
+</body>
+</html>

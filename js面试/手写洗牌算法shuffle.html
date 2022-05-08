@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function getRandomNumber(left,right){
+            return Math.floor(Math.random()*(right-left+1)+left)
+        }
+
+
+        function shuffle(arr){
+            let _arr=arr;
+            
+            for(let i=0;i<_arr.length;i++){
+                let j=getRandomNumber(0,i);
+                [_arr[i],_arr[j]]=[_arr[j],_arr[i]]
+            }
+
+            return _arr
+        }
+        const a=[1,2,3,4,5,6,7,8,9]
+        const b=shuffle(a)
+       
+        console.log(b);
+    </script>
+</body>
+</html>

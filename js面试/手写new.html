@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function mynew(func, ...args) {
+        //     const obj = {}
+        //     obj.__proto__ = func.prototype
+        //     //apply接受两个参数，第一个参数是this的指向，第二个参数是函数接受的参数，以数组的形式传入.
+        //     //如果构造函数有返回值 那么new就会返回构造函数的返回值
+        //     //需要将this指向指向obj
+        //     //改变this指向后原函数会立即执行，且此方法只是临时改变this指向一次
+        //     let result = func.apply(obj, args)
+        //     //如果父类有返回对象，则直接返回父类对象，没有对象才返回子类对象。
+        //     //判断result的类型 对象才会返回 其他不会
+        //     return result instanceof Object ? result : obj
+        // }
+
+
+
+
+
+
+        function mynew(func,...args){
+            const obj={};
+            obj.__proto__=func.prototype;
+            let result=func.call(obj,...args);
+            return result instanceof Object?result:obj;
+        }
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+
+        }
+        Person.prototype.say = function () {
+            console.log(this.name)
+        }
+
+        let p = mynew(Person, "huihui", 123)
+        console.log(p) // Person {name: "huihui", age: 123}
+        p.say() // huihui
+
+
+
+
+
+    </script>
+</body>
+
+</html>

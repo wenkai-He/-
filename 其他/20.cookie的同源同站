@@ -1,0 +1,7 @@
+1.同源策略:端口(port) 协议(scheme) 域名(host)
+2.cookie在不同端口 相同域名下是可以共享的 比如http://localhost:8000 跟http://localhost:90就属于跨站 但是cookie是允许跨站的
+3.同站：顶级域名+二级域名相同 不关注端口号 协议也要一样
+
+
+
+cors是如果要携带cookie的话就设置withCredentials为true

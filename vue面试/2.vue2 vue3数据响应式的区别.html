@@ -1,0 +1,20 @@
+1.vue2响应式就是object.defineproperty方法对数据进行数据劫持  对于数组类型就是通过重写数组的方法对数据进行拦截
+2.存在的问题：新增数据删除数据页面不会更新 需要用到$set和$delete   直接修改数组的下标，界面不会更新
+
+1.vue3响应式是通过reactive函数以及proxy进行的 解决了vue2中存在的问题 代理就是拦截对象中的任意属性变化
+2.proxy(target,handler) handler里有set get的配置 同样实现了vue2中的用法
+3.解决vue2的问题 删除 deleteProperty  set不仅仅可以修改 还能增加
+4.通过Reflect对被代理的对象的属性进行操作
+new Proxy(data,{
+    get(target,prop){
+        return Reflect.get(target,prop)
+    }
+    set(target,prop,value){
+        return Reflect.set(target,prop,value)
+    }
+    deleteProperty(target,prop){
+        return Reflect.deleteProperty(target,prop)
+    }
+})
+
+

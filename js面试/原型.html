@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //introduce是student的隐式原型
+        //__proto__和constructor是对象独有的 prototype是函数独有的
+        //student._proto_===Student.prototype
+        //隐式原型             显示原型
+        
+        //js对象定义方法为什么要定义在对象原型上 如果定义在对象里 会增加初始化的内存损耗 因为要单独开辟一个空间来存方法
+        //而定义在原型链上就可以减少这个成本
+
+
+        class Student {
+            constructor(name, score) {
+                this.name = name;
+                this.score = score;
+            }
+
+            introduce() {
+                console.log(`我是${this.name},考了${this.score}分`);
+            }
+        }
+
+        const student = new Student('小明', 99)
+
+        console.log('student', student);
+        student.introduce();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- bfc就是block formatting context块级格式化上下文 他有自己的渲染规则 -->
+    这两个标签的margin被折叠了 应该间隔100px+100px的 这时应该在一个p标签外包裹一个div触发bfc
+    <div class="out">
+        <p>Haha</p>
+    </div>
+    <p>Hehe</p>
+    外层的par高度未被展开 所以要清除内部浮动 外层触发bfc
+    <div class="par">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    这里可以看到我们是想实现两栏布局的，但是每个元素的左边距都会跟包含块的左边距相接触，所以我们需要在右栏触发bfc
+    <div class="outter">
+        <div class="aside"></div>
+        <div class="main"></div>
+    </div>
+</body>
+
+</html>
+<style>
+    .out{
+        overflow: hidden;
+    }
+    p {
+        color: #f55;
+        background: #fcc;
+        width: 200px;
+        line-height: 100px;
+        text-align: center;
+        margin: 100px;
+    }
+
+    .par {
+        overflow: hidden;
+        border: 5px solid #fcc;
+        width: 300px;
+    }
+ 
+    .child {
+        border: 5px solid #f66;
+        width:100px;
+        height: 100px;
+        float: left;
+    }
+
+    .outter {
+        width: 300px;
+        position: relative;
+    }
+ 
+    .aside {
+        width: 100px;
+        height: 150px;
+        float: left;
+        background: #f66;
+    }
+ 
+    .main {
+        overflow: hidden;
+        height: 200px;
+        background: #fcc;
+    }
+</style>

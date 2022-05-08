@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //bind 1.返回一个函数
+        //     2.第一个参数是this的指向
+        //     3.不影响返回值
+        // Function.prototype.mybind = function (context, ...outerArgs) {
+        //      let that = this;
+        //     return function (...innerArgs) {
+        //         return that.call(context, ...outerArgs, ...innerArgs)
+        //     }
+        // }
+            Function.prototype.mybind=function(context,...outerArgs){
+                let that=this;
+                return function(...innerArgs){
+                    return that.call(context,...outerArgs,...innerArgs)
+                }
+            }
+
+
+
+
+
+        function Object(a, b, c) {
+            console.log(a, b, c);
+            console.log(this.x + '------' + this.y);
+            return 'owen'
+        }
+
+        const obj = {
+            x: 1,
+            y: 2
+        }
+        const obj2 = {
+            x: 3,
+            y: 4
+        }
+        const obj3 = {
+            x: 5,
+            y: 6
+        }
+
+        const bindcallback = Object.mybind(obj2, 1)(2, 3)
+        console.log(bindcallback);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    为什么需要缓存？
+    因为当浏览器第一次打开网页时 需要加载很多资源 例如 js css html img等
+    如果我们将一些资源缓存，我们就可以更快的加载出页面。
+
+    第一种缓存 强制缓存
+    第一次发送请求后 服务器会设置一个响应头返回回来:cache-control 这里可以设置max-age缓存时间 
+    public可以被浏览器和代理服务器缓存 immutable资源永不更新 no-cache 跳过强缓存 no-store 不使用缓存
+    当再次请求时，如果时间没到，资源直接从缓存拿。
+
+    第二种缓存 协商缓存
+    第一次会发送资源以及资源标识
+    发送请求和资源标识 服务器判断资源标识是否一致 如果一致就会返回一个304状态码 提醒客户端从缓存里去拿 
+    如果不一致就会发送最新资源和最新资源标识
+    e-tag  if-none-match last-modified if-modified-since
+</body>
+</html>

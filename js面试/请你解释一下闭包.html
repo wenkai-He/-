@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    //9.闭包：函数可以访问甚至操作其他函数的作用域中的变量就称为闭包
+    //也可以说是定义在一个函数内部的函数
+    //   function outter(){
+    //       var a=2;
+    //       return function inner(){
+    //           console.log(a);
+    //       }
+    //   }
+    //   //这是一个很明显的闭包 outter函数在调用完后应该被销毁 同时他里面存在的var a=2也应该被销毁 但是闭包可以阻止垃圾回收机制回收
+    //   //inner函数拥有对outter函数的作用域的引用 这就是闭包
+    //   //闭包可以在函数作用域外中访问他的作用域中的变量
+    //   let a=outter();
+    //   a()
+    //   console.dir(a);
+
+    function foo(a) {
+      var b = a * 2;
+      function bar(c) {
+        console.log(a, b, c);
+      }
+      bar(b * 3);
+    }
+    foo(2);//2 4 12
+
+
+
+    //10.闭包的问题： 不正确使用闭包会造成内存泄漏 调用后置为null
+    function fn() {
+      // 没有声明从而制造了隐式全局变量test1
+      test1 = new Array(1000).fill('isboyjc1')
+
+      // 函数内部this指向window，制造了隐式全局变量test2
+      this.test2 = new Array(1000).fill('isboyjc2')
+    }
+    fn()
+    //意外的全局变量
+
+
+   //11.this指向的是当前调用函数的环境 箭头函数解决这个问题
+   //函数柯里化 模拟私有变量
+
+  </script>
+</body>
+
+</html>

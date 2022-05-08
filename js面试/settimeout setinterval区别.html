@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //settimeout只会执行一次，延时器    setinterval会循环下去  定时器
+        //两个使用函数名作为句柄时不能带参数
+        //最小是4ms
+        setTimeout(fun,1000);//参数是函数名
+        setTimeout(fun(),1000)//这种情况就是fun()是立即执行 属于主线程的
+        //字符串就可以带参数
+        setTimeout('fun()',1000);//参数是字符串
+
+        //setinterval需要清除
+
+
+    </script>
+</body>
+</html>

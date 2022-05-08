@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="owen"></canvas>
+    <script>
+        var owen = document.getElementById('owen');
+        owen.width = 1000;
+        owen.height = 1000;
+        var context = owen.getContext('2d');
+        // context.fillStyle='SkyBlue';//更改颜色
+        // context.strokeStyle='darkred';//更改颜色
+        // context.fillRect(0,0,100,100);//实心矩形
+        // context.strokeRect(120,0,100,100);//空心矩形
+        // context.clearRect(25,25,50,50)
+
+        //画圆
+        // context.beginPath();
+        // context.arc(100,100,100,0,Math.PI*2,true)
+        // context.closePath();
+        // context.fillStyle='SkyBlue';
+        // context.fill();
+
+        //画圆弧
+        // context.beginPath();
+        // context.arc(100, 100, 100, 0, Math.PI, true)
+        // context.strokeStyle = 'SkyBlue';
+        // context.stroke();
+
+        //画线段
+        context.strokeStyle = 'pink';
+        context.moveTo(0, 0);//创建一个起点
+        context.lineTo(100, 100);//创建一个终点然后连起来
+        context.lineTo(200, 0);
+        context.lineTo(0, 0);
+        context.stroke();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const namespace='mall';//命名空间。区分不同项目
+        const savestorage=function(key,value){
+            let storage=window.localStorage.getItem(namespace);//获取到的是字符串
+            if(!storage){
+                storage={};
+            }else{
+                storage=JSON.parse(storage)
+            }
+
+            storage[key]=value;
+            window.localStorage.setItem(namespace,JSON.stringify(storage))//传回去要用字符串
+        }
+
+
+
+        const loadItem=function(key,def){//def是默认值
+            let storage=window.localStorage.getItem(namespace);
+            if(!storage){
+                return def;
+            }
+            storage=JSON.parse(storage);
+            let result=storage[key];
+            return result||def;
+        }
+
+    </script>
+
+
+
+
+</body>
+</html>

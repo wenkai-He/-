@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(1);
+       let promise=new Promise((resolve,reject)=>{
+           setTimeout(()=>{
+                resolve();
+                console.log(2);
+           },0)
+       }).then(value=>console.log(3))
+       console.log(4);
+        //输出：1423 微任务快于宏任务 
+        //因为resolve是在宏任务里调用的 所以promise只能下一次微任务再调用了
+        //微任务 promise async await
+        //宏任务 settimeout setinterval dom ajax
+        //微任务>DOM操作>宏任务
+
+    </script>
+</body>
+</html>

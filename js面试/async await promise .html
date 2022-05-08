@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //promise 返回的值都走then throw new Error走catch
+
+
+
+
+        //async 其实是generator的语法糖 async就代表* await就是yield 
+        //封装了next()方法 不用自己执行 返回值是promise 如果返回值不是 则会包装成promise
+        //1.执行async函数 返回promise对象
+        async function test1() {
+            return 1;//自动封装成promise对象
+        }
+        async function test2() {
+            return Promise.resolve(2);
+        }
+        const result1 = test1();
+        const result2 = test2();
+        console.log('result1:', result1);
+        console.log('result2:', result2);
+        //2.promise.then 成功的情况对应的是await
+        async function test3() {
+            const p3 = Promise.resolve(3);
+            p3.then(data3 => {
+                console.log('data3', data3);
+            })
+            const data3 = await p3
+            console.log('data3', data3);
+        }
+        test3();
+        async function test4() {
+            const data4 = await 4;//===await Promise.resolve(4) 自动封装成promise对象
+            console.log('data4', data4);
+        }
+        test4()
+        async function test5() {
+            const data5 = await test1();//===await Promise.resolve(4) 自动封装成promise对象
+            console.log('data5', data5);
+        }
+
+        test5()
+
+
+        //3.Promise.catch 异常的情况 对应try...catch
+        async function test6() {
+            const p6 = Promise.reject(6);
+            try {
+                const data6 = await p6;
+                console.log('data6', data6);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        test6()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <div id='div'>
+        <p id='p'>
+            <span id='span'>Click Me!</span>
+        </p>
+    </div>
+</head>
+
+<body>
+    <script>
+        var div = document.getElementById('div');
+        var p = document.getElementById('p');
+
+        function onClickFn(event) {
+            var tagName = event.currentTarget.tagName;
+            var phase = event.eventPhase;
+            console.log(tagName, phase);
+        }
+
+        //addEventListener第三个参数可以是对象 
+        div.addEventListener('click', onClickFn, {
+            capture: false, // === useCapture false就是冒泡
+            once: false,    // 是否设置单次监听
+            passive:false // 是否让 阻止默认行为(preventDefault()) 失效
+        });
+
+
+        p.addEventListener('click', onClickFn, false);
+    </script>
+</body>
+
+</html>

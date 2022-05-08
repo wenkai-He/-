@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+        //typeof 可以检查出基本数据类型 可以检测出object function 数组检测为object null也检测为object
+
+       //instanceof用来检测构造函数的prototype属性是否在某个实例对象的原型链上 他无法检测基本数据类型 返回值是布尔值
+
+       //检测数据类型可以使用Object.prototype.toString.call()返回值[Object xxx]
+       最好的方法就是Object.prototype.toString.call(obj).slice(8,-1)
+       //toString返回的是反映这个对象的字符串
+       //如果直接使用obj.toString会出现问题 因为Array,Function他们都重写的toString方法
+ 
+    </script>
+</body>
+</html>

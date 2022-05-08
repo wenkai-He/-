@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            //Student.prototype===student._proto_
+            //Person.prototype===Student.prototype._proto_
+            //Object.prototype===Person.prototype._proto_
+
+        class Person{
+            constructor(name){
+                this.name=name;
+            }
+            drink(){
+                console.log('喝水');
+            }
+        }
+
+        class Student extends Person{
+            constructor(name,subject){
+                super(name);
+                this.subject=subject;
+            }
+            teach(){
+                console.log('学习');
+            }
+        }
+
+        const student=new Student('张三','cs')
+        console.log('student',student);
+
+        student.teach()
+        student.drink()
+
+    </script>
+</body>
+</html>

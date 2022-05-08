@@ -1,0 +1,21 @@
+1.类和模块的内部默认是严格模式  
+2.类的定义不存在变量提升 因为涉及到继承 必须保证子类在父类后定义
+3.类存在.name属性
+4.类的方法的this指向类的实例
+class Logger {
+  printName(name = 'there') {
+    this.print(`Hello ${name}`);
+  }
+
+  print(text) {
+    console.log(text);
+  }
+}
+
+const logger = new Logger();
+const { printName } = logger;
+printName(); // TypeError: Cannot read property 'print' of undefined
+需要注意的是 类的内部是默认严格模式的 this指向undefined 会报错 使用箭头函数可以将this绑定在实例对象上
+
+5.类的静态方法
+在方法前加一个static 实例无法继承 子类可以继承  如果静态方法中存在this 则这个this指向类而不是实例

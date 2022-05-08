@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[1,2,3,4,5,6]
+
+        for(let i in arr){
+            //遍历的是键 这里是遍历数组下标
+            console.log(i);
+        }
+
+        //forof属性的前提是一个对象上有Symbol.iterator属性 他才能遍历 本质上forof就是generator函数调用next方法
+        for (const i of arr) {
+            //遍历的是值
+            console.log(i);
+        }
+
+        arr.forEach(element => {
+            //遍历的是值
+            console.log(element);
+        });
+        const obj={
+            a:1,
+            b:2,
+            c:3
+        }
+        //手动给对象写一个Symbol.iterator
+        obj[Symbol.iterator]=function*(){
+            let arry=Object.keys(obj)
+            for(let i=0;i<arry.length;i++)
+            yield obj[arry[i]];
+        }
+        console.log(obj);
+        //对象上没有Symbol.iterator属性 forin可以 forof不行
+        for (const i of obj) {
+            console.log(i);
+        }
+    </script>
+</body>
+</html>

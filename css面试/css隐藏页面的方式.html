@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    display:none会触发重排重绘 不触发事件 页面中不存在
+    visibility:hidden 会触发重绘 不触发重排不触发事件 页面中存在
+    opacity:0 会触发重绘 不触发重排 触发事件 页面中存在
+    <div class="square">
+    </div>
+</body>
+
+</html>
+<style>
+    .square {
+        width: 100px;
+        height: 100px;
+        background: blue;
+        /* 1 display: none; */
+        /* 2 visibility: hidden; */
+        /* 3 opacity: 0; */
+        /* 4 position: absolute;
+        top: -9999px;
+        left: -9999px; */
+        /* 5 margin: 0;
+        border: 0;
+        padding: 0;
+        height: 0;
+        width: 0;
+        overflow: hidden;  隐藏他的子元素 */
+    }
+</style>

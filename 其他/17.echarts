@@ -1,0 +1,4 @@
+1.echarts是纯js的图形库。
+2.可以指定渲染器 默认是canvas svg或者canvas
+3.canvas更适合绘制图形元素数量非常大的图表
+4.svg内存占用低

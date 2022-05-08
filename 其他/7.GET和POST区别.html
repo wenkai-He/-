@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1.GET 参数随url一起发送  POST 参数放在请求体
+    2.POST比GET安全 仅限于参数在地址栏看不见而已 其实都不安全 因为HTTP 在网络上是明文传输的 只有使用HTTPS才能加密安全
+    3.GET会把header和data一起发送 POST会先发送header 等服务器返回100状态码 continue后 再发送data
+    4.GET浏览器回退是无害的 POST会再次发送请求
+    5.GET只能进行url编码 POST支持多种编码方式
+    6.GET只支持ascii字符 POST无限制
+    7.GET请求参数长度有限制 POST没有
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function mynode(sel, data, children, text, elm) {
+            return {
+                sel, data, children, text, elm
+            }
+        };
+        function patch (oldVnode,newVnode ){
+            if(oldVnode.sel==""||oldVnode.sel==undefined){
+                //包装成虚拟dom
+                oldVnode=mynode(oldVnode.tagName,{},[],undefined,oldVnode);
+
+            }
+            //判断oldvode和newvode是否为同一节点
+            if(oldVnode.key==newVnode.key&&oldVnode.sel==newVnode.sel)
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

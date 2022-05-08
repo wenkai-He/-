@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        我是div
+        <p>
+            div里的p元素
+            <span>p里的span</span>
+        </p>
+        <span>div里的span</span>
+        <span>div里的span</span>
+        <span>div里的span</span>
+        <span>div里的span</span>
+    </div>
+    <span>div外的span</span>
+</body>
+</html>
+<style>
+    /* div的儿子 */
+    div>span{
+        color: pink;
+    }
+    /* 后代选择器 */
+    div span{
+        color: skyblue;
+    }
+    /* 下一个兄弟元素 */
+    /* 父亲要是同一个 */
+    p+span{
+        color: red;
+    }
+    /* 所有兄弟元素 */
+    p~span{
+        color: green;
+    }
+    /* 这个是判断p是否为他父级的第一个子元素 如果是就变色 */
+    p:first-child{
+        color:purple
+    }
+    /* first-child */
+    /* nth-child(n) */
+</style>

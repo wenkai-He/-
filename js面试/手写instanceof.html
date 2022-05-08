@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // function myinstanceof(left, right) {
+        //     //null使用typeof也是返回object
+        //     if (typeof left !== 'object' || left === null)
+        //         return false;
+        //     let proto = Object.getPrototypeOf(left)
+        //     while (true) {
+        //         //找到头还是null
+        //         if (proto == null) return false;
+        //         //找到了
+        //         if (proto === right.prototype) return true;
+        //         //继续找
+        //         proto = Object.getPrototypeOf(proto)
+        //     }
+        // }
+       
+            
+        let Car = function () { }
+        let benz = new Car()
+        let a = myinstanceof(benz, Car)
+        console.log(a);
+        //第一步 就是判断是否是对象以及是否为空
+        //第二步 拿到原型
+        //第三步 沿着原型链循环查找 当proto=right.prototype 找到了 没有就继续找 当proto=null时就说明到头了
+            function myinstanceof(left,right){
+                if(typeof left!="object"||left==null)return false;
+                let proto=Object.getPrototypeOf(left);
+                while(1){
+                    if(proto==right.prototype)return true;
+                    if(proto==null)return false;
+                    proto=Object.getPrototypeOf(proto)
+                }
+            }
+           
+            
+                
+
+      
+    </script>
+
+</body>
+
+</html>

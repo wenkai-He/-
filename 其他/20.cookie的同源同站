@@ -2,6 +2,14 @@
 2.cookie在不同端口 相同域名下是可以共享的 比如http://localhost:8000 跟http://localhost:90就属于跨站 但是cookie是允许跨站的
 3.同站：顶级域名+二级域名相同 不关注端口号 协议也要一样
 
-
-
+对cookie配置samesite可以避免csrf攻击
 cors是如果要携带cookie的话就设置withCredentials为true
+
+
+
+
+
+浏览器会依据加载的域名附带上对应域名cookie，又不是发送b站的cookie。
+就是如果用户在a站登录了生成了授权的cookie之类的，然后访问b站，
+b站故意构造请求a站的请求，如删除操作之类的，用script，img或者iframe之类的加载a站着个地址，
+浏览器会附带上a站此登录用户的授权cookie信息，这样就构成crsf，会删除掉当前用户的数据

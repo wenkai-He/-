@@ -1,0 +1,1 @@
+1.初始化useState时，会存在一个hooks链表 链表通过next来绑定三个state顺序，如果多次调用hooks时，通过条件性的忽略掉useState不执行，这时候会造成state错位

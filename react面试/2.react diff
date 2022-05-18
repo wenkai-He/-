@@ -1,0 +1,16 @@
+A B C D E F
+A C E B G
+以上如何diff? 首先只对同级节点进行对比，如果DOM节点跨层级移动，则不复用
+首先根据旧dom生成一个map{A,B,C,D,E,F} 复用一个就删除一个  
+lastPlacedIndex代表最后一个不需要移动的节点的索引 对比lastPlacedIndex 与 oldIndex，lastPlacedIndex <= oldIndex 不需要移动，否则就需要移动位置，并且更新属性
+
+1.第一步新dom第一个为A,lastPlacedIndex=oldIndex 直接复用
+2.对于C lastPlacedIndex<oldIndex 直接复用 此时lastPlacedIndex=2
+3.对于E lastPlacedIndex<oldIndex 直接复用 此时lastPlacedIndex=4
+4.对于B lastPlacedIndex>oldIndex 需要移动位置并且更新属性
+5.对于G map里没有 需要重新创建并且插入 
+6.最后map里剩下 DF直接删除
+对这些只是进行一个effect list 最后才会根据effect list 进行真实dom的修改，修改时先删除，然后更新与移动，最后插入
+
+react单指针
+vue双指针

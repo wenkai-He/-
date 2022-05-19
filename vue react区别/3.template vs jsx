@@ -1,0 +1,19 @@
+1.template 插值语法 以及v-bind的冒号指令语法都很方便 在html里写js
+2.jsx javascript xml 不同于vue中的模块语法 在js里写html
+
+vue的模板语法也使得更好上手 三段式的结构
+
+
+jsx本质上就是 React.creatElement()
+
+jsx好处：本质上还是js，更加的灵活 编写风格不会被局限 
+
+template好处：使得mvvm更完全的分离了 模块与逻辑的分离 
+
+
+模板编译的本质是render函数生成vnode
+
+
+编写css vue有scoped来限制唯一作用域 vue-loader还可以随意设置预处理器
+
+    react对于样式来说不是很友好 最好的方法是行内style 以及module.css配合类名
